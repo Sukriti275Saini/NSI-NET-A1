@@ -1,0 +1,65 @@
+﻿@page
+@model Video_Leasing_Management.Pages.Admin.movies.IndexModel
+
+@{
+    ViewData["Title"] = "All Movies";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Add New Movie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].MoviesId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].ReturnDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Fine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoviesId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fine)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.MoviesId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

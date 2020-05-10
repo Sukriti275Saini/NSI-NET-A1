@@ -1,0 +1,76 @@
+﻿@page
+@model Video_Leasing_Management.Pages.SignupModel
+@{
+    ViewData["Title"] = "Signup";
+}
+
+<!--
+    <div class="form-group">
+        <label asp-for="Movie.ReleaseDate" class="control-label"></label>
+        <input asp-for="Movie.ReleaseDate" class="form-control" />
+        <span asp-validation-for="Movie.ReleaseDate" class="text-danger"></span>
+    </div>
+-->
+
+<div class="row text-center">
+    <div id="formContent" class="m-auto">
+        <div class="fadeIn first">
+            <h2>Sign Up</h2>
+        </div>
+
+        <form method="post">
+            <div class="form-group">
+                <input asp-for="SignupDetails.UserName" placeholder="Username" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.UserName"></span>
+                    <span class="text-danger">@Model.Message</span>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input asp-for="SignupDetails.FirstName" placeholder="First name" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.FirstName"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input asp-for="SignupDetails.LastName" placeholder="Last name" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.LastName"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input asp-for="SignupDetails.DOB" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.DOB"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input asp-for="SignupDetails.Phone" placeholder="Phone number" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.Phone"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input asp-for="SignupDetails.Email" placeholder="Email" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.Email"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input asp-for="SignupDetails.Password" placeholder="Password" autocomplete="nope" class="fadeIn first" />
+                <div>
+                    <span class="text-danger" asp-validation-for="SignupDetails.Password"></span>
+                </div>
+            </div>
+            <input type="submit" class="fadeIn second" value="SignUp" />
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

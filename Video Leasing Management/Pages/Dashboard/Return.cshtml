@@ -1,0 +1,31 @@
+﻿@page "{rId:int}"
+@model Video_Leasing_Management.Pages.Dashboard.ReturnModel
+@{
+    ViewData["Title"] = "Return";
+}
+
+<h1>Return</h1>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="~/movie-thumb.jpg" class="card-img" alt="movie">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.UserRecord.Movies.Title</h5>
+                        <p class="card-text">Issue Date : @Model.UserRecord.TakenDate</p>
+                        <p class="card-text">Return Date : @Model.UserRecord.ReturnDate</p>
+                        <form method="post">
+                            <button type="submit" class="btn btn-lg btn-primary">Return</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@page
+@model Video_Leasing_Management.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row text-center">
+    <div id="formContent" class="m-auto">
+        <div class="fadeIn first">
+            <h2>Login</h2>
+        </div>
+
+        <form method="post">
+            <div class="form-group">
+                <input autocomplete="nope" placeholder="Username" class="fadeIn first" asp-for="LoginDetails.UserName" />
+                <div>
+                    <span class="text-danger" asp-validation-for="LoginDetails.UserName"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input autocomplete="nope" type="password" placeholder="Password" class="fadeIn first" asp-for="LoginDetails.Password" />
+                <div>
+                    <span class="text-danger" asp-validation-for="LoginDetails.Password"></span>
+                </div>
+            </div>
+            <input type="submit" class="fadeIn second" value="Login" />
+        </form>
+
+        <div class="lead no-gutters">
+            <span class="text-danger">@Model.Message</span>
+        </div>
+        <a asp-page="/Signup">Signup</a>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

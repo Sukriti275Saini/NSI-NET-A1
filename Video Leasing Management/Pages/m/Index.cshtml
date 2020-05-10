@@ -1,0 +1,46 @@
+﻿@page
+@model Video_Leasing_Management.Pages.m.IndexModel
+@{
+    ViewData["Title"] = "Movies List";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Movies</h2>
+    </div>
+    <hr />
+
+    @if (Model.AllMovies == null)
+    {
+        <div class="col-12 alert alert-info">
+            <h3>Movies will be back soon!</h3>
+        </div>
+    }
+    else
+    {
+        @foreach (var movie in Model.AllMovies)
+        {
+            <div class="col-md-4 p-3">
+                <div class="card bg-dark text-white">
+                    <img src="~/movie-thumb.jpg" class="card-img img-overlay" alt="image">
+                    <div class="card-img-overlay d-flex flex-column justify-content-end">
+                        <div>
+                            <h4 class="card-title">@Html.DisplayFor(model => movie.Title)</h4>
+                        </div>
+                        <span class="dropdown-divider d-block"></span>
+                        <div class="row flex-row justify-content-between px-4">
+                            <p>@Html.DisplayFor(model => movie.Genre)</p>
+                            <p class="font-italic">@Html.DisplayFor(model => movie.Language)</p>
+                        </div>
+                        <div class="row justify-content-between px-4">
+                            <p class="font-weight-bold">rent it for @Html.DisplayFor(model => movie.ReturnDays) days</p>
+                            <div>
+                                <a class="btn btn-primary btn-sm" asp-page="./Detail" asp-route-mId="@movie.MoviesId">See More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

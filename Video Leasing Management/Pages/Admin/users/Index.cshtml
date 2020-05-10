@@ -1,0 +1,78 @@
+﻿@page
+@model Video_Leasing_Management.Pages.Admin.users.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Users</h1>
+
+<div class="mb-2">
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</div>
+
+<hr class="my-4" />
+
+<table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Password)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.User)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-page="./Edit" asp-route-id="@item.UserName">Edit</a> |
+                    <a class="btn btn-sm btn-primary" asp-page="./Details" asp-route-id="@item.UserName">Details</a> |
+                    <a class="btn btn-sm btn-primary" asp-page="./Delete" asp-route-id="@item.UserName">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

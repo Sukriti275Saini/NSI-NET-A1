@@ -1,0 +1,35 @@
+﻿@page "{user:minlength(1)}"
+@model Video_Leasing_Management.Pages.u.IndexModel
+
+@{
+    ViewData["Title"] = "Account";
+}
+
+
+
+<div class="row justify-content-between">
+    <div class="col-12">
+        <h2>Settings</h2>
+        <hr />
+    </div>
+    <div class="col-5">
+        <div class="card border-dark mb-3">
+            <div class="card-header bg-transparent border-dark"><h5>@Html.DisplayFor(model => model.UserData.UserName)</h5></div>
+            <div class="card-body">
+                <h6 class="card-title">Full name : @Html.DisplayFor(model => model.UserData.FirstName) @Html.DisplayFor(model => model.UserData.LastName)</h6>
+                <p class="card-text">Date of birth : @Html.DisplayFor(model => model.UserData.DOB)</p>
+                <p class="card-text">Phone number : @Html.DisplayFor(model => model.UserData.Phone)</p>
+                <p class="card-text">Email : @Html.DisplayFor(model => model.UserData.Email)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="list-group border-dark">
+            <a class="list-group-item list-group-item-action active" asp-page="./Index" asp-route-user="@Model.UserData.UserName">Details</a>
+            <a class="list-group-item list-group-item-action list-group-item-primary" asp-page="./Edit" asp-route-user="@Model.UserData.UserName">Edit Details</a>
+            <a class="list-group-item list-group-item-action list-group-item-danger" asp-page="./Delete" asp-route-user="@Model.UserData.UserName">Delete Account</a>
+        </div>
+    </div>
+</div>
+
+

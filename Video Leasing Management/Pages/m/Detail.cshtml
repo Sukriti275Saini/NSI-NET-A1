@@ -1,0 +1,36 @@
+﻿@page "{mId:int}"
+@model Video_Leasing_Management.Pages.m.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card mb-3 border-dark">
+            <img src="~/movie-thumb.jpg" height="250" class="card-img-top" alt="movie">
+            <div class="card-body">
+                <div class="row align-items-end justify-content-around">
+                    <div class="col-12">
+                        <h1>@Html.DisplayFor(model => model.MovieData.Title)</h1>
+                    </div>
+                </div>
+                <hr class="mb-4 bg-dark my-3" />
+                <div class="h6 text-muted">
+                    <span>@Html.DisplayFor(model => model.MovieData.ReleaseYear)</span> |
+                    <span>@Html.DisplayFor(model => model.MovieData.Genre)</span> |
+                    <span>@Html.DisplayFor(model => model.MovieData.Language)</span>
+                </div>
+                <h5 class="card-text font-weight-bolder">Directed by : @Html.DisplayFor(model => model.MovieData.Director)</h5>
+                <p>@Html.DisplayFor(model => model.MovieData.Description)</p>
+                <hr class="mb-4 bg-dark my-3" />
+                <p class="alert alert-info small">You have to return this movie within <strong>@Html.DisplayFor(model => model.MovieData.ReturnDays) Days</strong></p>
+                <p class="alert alert-warning font-weight-bold small">Fine after return date : Rs. @Html.DisplayFor(model => model.MovieData.Fine)</p>
+                <form method="post" class="mt-4">
+                    <button type="submit" class="btn btn-lg btn-block btn-primary">Rent this movie</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

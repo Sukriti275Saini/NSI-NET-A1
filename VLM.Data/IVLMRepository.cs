@@ -22,6 +22,7 @@ namespace VLM.Data
         string Delete(string username);
 
         //For Records
+        IEnumerable<Records> GetAllRecords();
         IEnumerable<Records> GetRecordsByUsername(string username);
         Records GetRecordsById(int recordId);
         bool DeleteRecord(Records Record);

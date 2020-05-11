@@ -1,0 +1,55 @@
+﻿@page
+@model Video_Leasing_Management.Pages.Admin.records.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].Movies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].TakenDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].ReturnDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Records)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TakenDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.RecordsId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.RecordsId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.RecordsId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

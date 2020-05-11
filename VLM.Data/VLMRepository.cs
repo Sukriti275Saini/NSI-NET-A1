@@ -97,6 +97,14 @@ namespace VLM.Data
 
 
         //For Records
+        public IEnumerable<Records> GetAllRecords()
+        {
+            return from r in db.Records.Include("Movies").Include("User")
+                   orderby r.User.UserName
+                   orderby r.TakenDate
+                   select r;
+        }
+
         public IEnumerable<Records> GetRecordsByUsername(string username)
         {
             var query = from r in db.Records.Include("Movies")
@@ -144,6 +152,5 @@ namespace VLM.Data
         {
             return db.SaveChanges();
         }
-
     }
 }

@@ -5,13 +5,15 @@
     ViewData["Title"] = "All Movies";
 }
 
-<h1>Index</h1>
+<h1>All Movies</h1>
+<div class="mb-2">
+    <a asp-page="Create" class="btn btn-primary">Add Movie</a>
+</div>
 
-<p>
-    <a asp-page="Create" class="btn btn-primary">Add New Movie</a>
-</p>
-<table class="table">
-    <thead>
+<hr class="my-4" />
+
+<table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Movies[0].MoviesId)

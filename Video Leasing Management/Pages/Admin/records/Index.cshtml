@@ -3,20 +3,22 @@
 
 @{
     ViewData["Title"] = "Index";
+    string Color = "font-weight-normal";
 }
 
-<h1>Index</h1>
+<h1>All Records</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-light table-bordered table-hover">
+    <thead class="thead-dark">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].RecordsId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Records[0].User)
             </th>
             <th>
+                Movie Id |
                 @Html.DisplayNameFor(model => model.Records[0].Movies)
             </th>
             <th>
@@ -31,12 +33,21 @@
     <tbody>
         @foreach (var item in Model.Records)
         {
-            <tr>
+            double Defaulter = (item.ReturnDate.Date - DateTime.Now.Date).TotalDays;
+            if (Defaulter < 0)
+            {
+                Color = "font-weight-normal table-warning";
+            }
+            <tr class="@Color">
                 <td>
-                    @Html.DisplayFor(modelItem => item.User)
+                    @Html.DisplayFor(modelItem => item.RecordsId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Movies)
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movies.MoviesId) |
+                    @Html.DisplayFor(modelItem => item.Movies.Title)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TakenDate)
@@ -45,9 +56,7 @@
                     @Html.DisplayFor(modelItem => item.ReturnDate)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.RecordsId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.RecordsId">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.RecordsId">Delete</a>
+                    <a asp-page="./Details" class="btn btn-primary btn-sm" asp-route-id="@item.RecordsId">Details</a>
                 </td>
             </tr>
         }

@@ -12,27 +12,28 @@ namespace Video_Leasing_Management.Pages.Admin.records
 {
     public class DetailsModel : PageModel
     {
-        private readonly VLM.Data.VLMDbContext _context;
+        private readonly IVLMRepository _context;
 
-        public DetailsModel(VLM.Data.VLMDbContext context)
+        public DetailsModel(IVLMRepository context)
         {
             _context = context;
         }
 
         public Records Records { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(int id)
         {
-            if (id == null)
+            if (id < 0)
             {
-                return NotFound();
+                return RedirectToPage("Index");
             }
 
-            Records = await _context.Records.FirstOrDefaultAsync(m => m.RecordsId == id);
+            Records = _context.GetRecordsById(id, true);
 
             if (Records == null)
             {
-                return NotFound();
+                NotFound();
+                return RedirectToPage("Index");
             }
             return Page();
         }

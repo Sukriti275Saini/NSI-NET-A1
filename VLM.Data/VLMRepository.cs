@@ -118,11 +118,15 @@ namespace VLM.Data
             return null;
         }
 
-        public Records GetRecordsById(int recordId)
+        public Records GetRecordsById(int recordId, bool IncludeUser = false)
         {
             var query = from r in db.Records.Include("Movies")
                         where r.RecordsId.Equals(recordId)
                         select r;
+            if (IncludeUser == true)
+            {
+                query = query.Include("User");
+            }
             if (query.Count() > 0)
             {
                 return query.SingleOrDefault();

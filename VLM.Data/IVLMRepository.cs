@@ -24,7 +24,7 @@ namespace VLM.Data
         //For Records
         IEnumerable<Records> GetAllRecords();
         IEnumerable<Records> GetRecordsByUsername(string username);
-        Records GetRecordsById(int recordId);
+        Records GetRecordsById(int recordId, bool IncludeUser = false);
         bool DeleteRecord(Records Record);
         bool AddRecord(Records newRecord);
 

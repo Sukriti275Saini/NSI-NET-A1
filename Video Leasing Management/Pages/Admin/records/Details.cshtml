@@ -8,9 +8,48 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Records</h4>
+    <h4>
+        Record Id : @Html.DisplayFor(model => model.Records.RecordsId)
+    </h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Records.User.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Records.User.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            Full Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Records.User.FirstName)
+            @Html.DisplayFor(model => model.Records.User.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Records.User.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Records.User.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Records.User.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Records.User.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Records.Movies.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Records.Movies.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Records.Movies.Fine)
+        </dt>
+        <dd class="col-sm-10">
+            Rs. @Html.DisplayFor(model => model.Records.Movies.Fine)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Records.TakenDate)
         </dt>
@@ -26,6 +65,5 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Records.RecordsId">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

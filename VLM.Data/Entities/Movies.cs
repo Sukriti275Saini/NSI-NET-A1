@@ -19,7 +19,7 @@ namespace VLM.Data.Entities
 
         [Required]
         [StringLength(30, ErrorMessage = "Min:1, Max:30", MinimumLength = 1)]
-        [RegularExpression(@"^[A-Z][a-z]*$", ErrorMessage = "first capital rest small letters with no space")]
+        [RegularExpression(@"^[A-Z][a-z ]*$", ErrorMessage = "first capital rest small letters")]
         public string Director { get; set; }
 
         [Required]
@@ -39,7 +39,7 @@ namespace VLM.Data.Entities
 
         [Required]
         [StringLength(500, ErrorMessage = "Min:10, Max:500", MinimumLength = 10)]
-        [RegularExpression(@"^[a-zA-Z0-9]+[a-z0-9A-Z:""'\s-]*$")]
+        [RegularExpression(@"^[a-zA-Z0-9]+[a-z0-9A-Z,./:""'\s-?!@$%*&()]*$")]
         public string Description { get; set; }
 
         [Display(Name = "Return Days")]

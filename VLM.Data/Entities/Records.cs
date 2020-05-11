@@ -9,10 +9,24 @@ namespace VLM.Data.Entities
 {
     public class Records
     {
-        [Key] public int RecordsId { get; set; }
-        [Required] public User User { get; set; }
-        [Required] public Movies Movies { get; set; }
-        [Required] public DateTime TakenDate { get; set; }
-        [Required] public DateTime ReturnDate { get; set; }
+        [Key]
+        [Display(Name = "Record Id")]
+        public int RecordsId { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public User User { get; set; }
+
+        [Required]
+        [Display(Name = "Movie Name")]
+        public Movies Movies { get; set; }
+
+        [Required]
+        [Display(Name = "Issue Date")]
+        public DateTime TakenDate { get; set; }
+
+        [Required]
+        [Display(Name = "Return Date")]
+        public DateTime ReturnDate { get; set; }
     }
 }

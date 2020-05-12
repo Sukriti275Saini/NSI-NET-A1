@@ -23,8 +23,8 @@ namespace VLM.Data
               .HasData(new
               {
                   UserName = "surisagar900",
-                  FirstName = "sagar",
-                  LastName = "suri",
+                  FirstName = "Sagar",
+                  LastName = "Suri",
                   DOB = new DateTime(1999, 03, 15),
                   Email = "s@gmail.com",
                   Phone = 9876543210,
@@ -79,7 +79,7 @@ namespace VLM.Data
               new
               {
                   RecordsId = 2,
-                  UserName = "Surisagar900",
+                  UserName = "surisagar900",
                   MoviesId = 3,
                   TakenDate = new DateTime(2020, 05, 02),
                   ReturnDate = new DateTime(2020, 05, 22)

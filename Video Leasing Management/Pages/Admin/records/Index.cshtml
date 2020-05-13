@@ -7,7 +7,8 @@
 }
 
 <h1>All Records</h1>
-
+<hr class="my-3 bg-dark" />
+<p class="text-info">*Rows in yellow represents defaulters</p>
 <table class="table table-light table-bordered table-hover">
     <thead class="thead-dark">
         <tr>
@@ -27,38 +28,48 @@
             <th>
                 @Html.DisplayNameFor(model => model.Records[0].ReturnDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].Movies.Fine)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Records)
         {
-            double Defaulter = (item.ReturnDate.Date - DateTime.Now.Date).TotalDays;
-            if (Defaulter < 0)
-            {
-                Color = "font-weight-normal table-warning";
+        double Defaulter = (item.ReturnDate.Date - DateTime.Now.Date).TotalDays;
+        if (Defaulter < 0)
+        {
+        Color = "font-weight-normal table-warning";
+        }
+        <tr class="@Color">
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movies.MoviesId) |
+                @Html.DisplayFor(modelItem => item.Movies.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TakenDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            @if(Defaulter < 0){
+            <td>
+                @Html.DisplayFor(modelItem => item.Movies.Fine)
+            </td>
+            }else{
+            <td>0</td>
             }
-            <tr class="@Color">
-                <td>
-                    @Html.DisplayFor(modelItem => item.RecordsId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Movies.MoviesId) |
-                    @Html.DisplayFor(modelItem => item.Movies.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TakenDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReturnDate)
-                </td>
-                <td>
-                    <a asp-page="./Details" class="btn btn-primary btn-sm" asp-route-id="@item.RecordsId">Details</a>
-                </td>
-            </tr>
+            <td>
+                <a asp-page="./Details" class="btn btn-primary btn-sm" asp-route-id="@item.RecordsId">Details</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
